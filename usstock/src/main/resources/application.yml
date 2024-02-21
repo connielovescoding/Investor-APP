@@ -1,0 +1,41 @@
+# Alpha Vantage API key
+# J3UC7QYMJXALPB7P
+
+server.port: 8888
+
+api:
+    alphavantage:
+        apikey: J3UC7QYMJXALPB7P
+        domain: alphavantage.co
+        endpoints:
+            stockprice:
+                query: query
+
+    finnhub:
+        token: ck4fjshr01qus81pv3ogck4fjshr01qus81pv3p0
+        domain: finnhub.io
+        base-url: api/v1
+        endpoints:
+            stock:
+                profile2: /stock/profile2
+                quote: /quote
+                symbol: /stock/symbol
+
+spring.datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: admin1234
+    driver-class-name: org.postgresql.Driver
+
+spring.jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.ddl-auto: update
+    show-sql: true
+        
+spring.sql.init.mode: always # always
+
+# none: No action will be performed. No schema will be generated.
+# create: Creates the schema, destroying previous data.
+# create-drop: Creates the schema and drops it when the SessionFactory is closed, typically when the application is stopped.
+# validate: Validates the schema, makes no changes to the database.
+# update: Updates the schema if necessary, while trying to keep existing data
