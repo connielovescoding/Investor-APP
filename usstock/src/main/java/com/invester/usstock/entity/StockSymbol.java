@@ -14,7 +14,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "finnhub_stock_symbols")
+@Table(name = "stock_symbol")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

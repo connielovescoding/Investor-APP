@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import com.invester.usstock.model.dto.finnhub.QuoteDTO;
-import com.invester.usstock.service.finnhub.StockPriceRealtimeService;
+import com.invester.usstock.model.dto.finnhub.CompanyProfile2DTO;
+import com.invester.usstock.service.finnhub.CompanyService;
 
 @Service
-public class StockPriceRealtimeServiceImpl implements StockPriceRealtimeService {
+public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -21,27 +21,27 @@ public class StockPriceRealtimeServiceImpl implements StockPriceRealtimeService 
     @Value("${api.finnhub.base-url}")
     private String baseUrl;
 
-    @Value("${api.finnhub.endpoints.stock.quote}")
-    private String quoteEndpoint;
+    @Value("${api.finnhub.endpoints.stock.profile2}")
+    private String companyProfile2Endpoint;
     
     @Value("${api.finnhub.token}")
     private String token;
 
     @Override
-    public QuoteDTO getQuote(String symbol) {
-        String url = UriComponentsBuilder.newInstance()
+    public CompanyProfile2DTO getCompanyProfile(String symbol) {
+        String url = UriComponentsBuilder.newInstance() //
             .scheme("https")
             .host(domain)
             .pathSegment(baseUrl)
-            .path(quoteEndpoint)
+            .path(companyProfile2Endpoint)
             .queryParam("symbol", symbol)
             .queryParam("token", token)
             .build()
             .toUriString();
 
         try {
-            System.out.println("url=== " + url);
-            return restTemplate.getForObject(url, QuoteDTO.class);
+            CompanyProfile2DTO profile = restTemplate.getForObject(url, CompanyProfile2DTO.class);
+            return profile;
         } catch (RestClientException e) {
             System.out.println("Error");
         }

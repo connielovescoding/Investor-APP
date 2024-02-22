@@ -12,7 +12,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @EqualsAndHashCode
-public class StockSymbolDTO {
+public class SymbolDTO {
     
     private String currency;
     

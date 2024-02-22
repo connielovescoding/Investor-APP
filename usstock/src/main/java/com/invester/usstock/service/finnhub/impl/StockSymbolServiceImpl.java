@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.invester.usstock.entity.StockSymbol;
-import com.invester.usstock.model.dto.finnhub.StockSymbolDTO;
+import com.invester.usstock.model.dto.finnhub.SymbolDTO;
 import com.invester.usstock.model.mapper.FinnhubMapper;
 import com.invester.usstock.repository.StockSymbolRepo;
 import com.invester.usstock.service.finnhub.StockSymbolService;
@@ -39,7 +39,7 @@ public class StockSymbolServiceImpl implements StockSymbolService {
     private String token;
     
     @Override
-    public List<StockSymbolDTO> getAllSymbols() {
+    public List<SymbolDTO> getAllSymbols() {
         String url = UriComponentsBuilder.newInstance()
             .scheme("https")
             .host(domain)
@@ -50,12 +50,12 @@ public class StockSymbolServiceImpl implements StockSymbolService {
             .build()
             .toUriString();
         
-        StockSymbolDTO[] symbols = restTemplate.getForObject(url, StockSymbolDTO[].class);
+        SymbolDTO[] symbols = restTemplate.getForObject(url, SymbolDTO[].class);
         return Arrays.asList(symbols);
     }
 
     @Override
-    public List<StockSymbol> save(List<StockSymbolDTO> symbols) {
+    public List<StockSymbol> save(List<SymbolDTO> symbols) {
         List<StockSymbol> stockSymbols = symbols.stream() //
             .filter(s -> "Common Stock".equals(s.getType())) //
             .map(s -> finnhubMapper.map(s)) //

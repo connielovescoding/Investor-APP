@@ -1,12 +1,13 @@
 package com.invester.usstock.model.dto.finnhub;
 
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class StockPriceRealTimeDTO {
+public class QuoteDTO implements Serializable {
 
     @JsonProperty(value = "c")
     private double currentPrice;

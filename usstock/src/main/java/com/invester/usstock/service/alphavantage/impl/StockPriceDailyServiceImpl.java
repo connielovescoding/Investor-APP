@@ -1,4 +1,4 @@
-package com.invester.usstock.service.impl;
+package com.invester.usstock.service.alphavantage.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.invester.usstock.entity.StockPriceDaily;
 import com.invester.usstock.model.dto.alphavantage.DailyPriceDTO;
 import com.invester.usstock.model.mapper.AlphavantageMapper;
-import com.invester.usstock.service.StockPriceService;
+import com.invester.usstock.service.alphavantage.StockPriceDailyService;
 
 @Service
-public class StockPriceServiceImpl implements StockPriceService {
+public class StockPriceDailyServiceImpl implements StockPriceDailyService {
     
     @Autowired
     private RestTemplate restTemplate;

@@ -27,6 +27,7 @@ public class DailyPriceDTO {
     @ToString
     @EqualsAndHashCode
     public static class MetaData {
+
         @JsonProperty("1. Information")
         private String information;
 
@@ -50,6 +51,7 @@ public class DailyPriceDTO {
     @ToString
     @EqualsAndHashCode
     public static class DailyStockData {
+
         @JsonProperty("1. open")
         private Double open;
 
@@ -66,4 +68,5 @@ public class DailyPriceDTO {
         private Long volume;
 
     }
+    
 }
